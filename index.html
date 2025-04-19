@@ -2,35 +2,70 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Coming Soon</title>
+  <title>Celenor - Luxury Skincare</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Open+Sans&display=swap" rel="stylesheet">
   <style>
-    html, body {
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
+    }
+
+    html, body {
       height: 100%;
-      overflow: hidden;
+      font-family: 'Open Sans', sans-serif;
     }
 
     body {
-      background: url('https://images.pexels.com/photos/1242348/pexels-photo-1242348.jpeg') no-repeat center center fixed;
+      background: url('https://images.pexels.com/photos/3762881/pexels-photo-3762881.jpeg') no-repeat center center fixed;
       background-size: cover;
       display: flex;
       justify-content: center;
       align-items: center;
-      font-family: Arial, sans-serif;
       color: white;
-      text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+      text-align: center;
+      animation: fadeIn 2s ease-in;
+    }
+
+    .container {
+      background: rgba(0, 0, 0, 0.5);
+      padding: 60px 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
     }
 
     h1 {
+      font-family: 'Playfair Display', serif;
       font-size: 48px;
-      background: rgba(0, 0, 0, 0.4);
-      padding: 20px 40px;
-      border-radius: 10px;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 20px;
+      font-weight: 300;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 32px;
+      }
+      p {
+        font-size: 16px;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>We're launching soon!</h1>
+  <div class="container">
+    <h1>CELENOR</h1>
+    <p>Luxury Skincare Reimagined</p>
+    <p><strong>Launching Soon</strong></p>
+  </div>
 </body>
 </html>

@@ -18,28 +18,30 @@
     }
 
     body {
+      background: #000; /* temporary fallback while background loads */
+    }
+
+    .background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
       background: url('https://images.pexels.com/photos/3762881/pexels-photo-3762881.jpeg') no-repeat center center fixed;
       background-size: cover;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      text-align: center;
-      animation: fadeIn 2s ease-in;
+      z-index: 0;
     }
 
     .container {
+      position: relative;
+      z-index: 1;
       background: rgba(0, 0, 0, 0.5);
       padding: 60px 40px;
       border-radius: 20px;
       box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
-      z-index: 1;
-      opacity: 0;
-      transition: opacity 1s ease;
-    }
-
-    .container.show {
-      opacity: 1;
+      text-align: center;
+      color: white;
+      display: none; /* hidden until loading is done */
     }
 
     h1 {
@@ -78,9 +80,14 @@
       height: auto;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    .content-wrapper {
+      position: relative;
+      z-index: 5;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     @media (max-width: 600px) {
@@ -98,27 +105,18 @@
   </style>
 </head>
 <body>
+  <!-- Background Image -->
+  <div class="background"></div>
+
   <!-- Logo Loading Overlay -->
   <div class="loading-screen" id="loadingScreen">
-    <!-- Replace with your logo file -->
+    <!-- Replace with your logo path -->
     <img src="assets/Celenor-Logo.png" alt="Celenor Logo">
   </div>
 
   <!-- Main Content -->
-  <div class="container" id="mainContent">
-    <h1>CELENOR</h1>
-    <p>Luxury Skincare Reimagined</p>
-    <p><strong>Launching Soon</strong></p>
-  </div>
-
-  <script>
-    // Show the logo for 3 seconds, then hide and reveal content
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        document.getElementById('loadingScreen').classList.add('hidden');
-        document.getElementById('mainContent').classList.add('show');
-      }, 3000); // 3000 milliseconds = 3 seconds
-    });
-  </script>
-</body>
-</html>
+  <div class="content-wrapper">
+    <div class="container" id="mainContent">
+      <h1>CELENOR</h1>
+      <p>Luxury Skincare Reimagined</p>
+      <p><strong>Launching Soon</strong></p>

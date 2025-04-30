@@ -14,6 +14,7 @@
     html, body {
       height: 100%;
       font-family: 'Open Sans', sans-serif;
+      overflow: hidden;
     }
 
     body {
@@ -32,6 +33,7 @@
       padding: 60px 40px;
       border-radius: 20px;
       box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+      z-index: 1;
     }
 
     h1 {
@@ -46,6 +48,30 @@
       font-weight: 300;
     }
 
+    .loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      transition: opacity 0.6s ease;
+    }
+
+    .loading-screen.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .loading-screen img {
+      width: 160px;
+      height: auto;
+    }
+
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
@@ -58,14 +84,33 @@
       p {
         font-size: 16px;
       }
+
+      .loading-screen img {
+        width: 100px;
+      }
     }
   </style>
 </head>
 <body>
+  <!-- Logo Loading Overlay -->
+  <div class="loading-screen" id="loadingScreen">
+    <!-- Replace with your logo path -->
+    <img src="assets/Celenor-Logo.png" alt="Celenor Logo">
+  </div>
+
+  <!-- Main Content -->
   <div class="container">
     <h1>CELENOR</h1>
     <p>Luxury Skincare Reimagined</p>
     <p><strong>Launching Soon</strong></p>
   </div>
+
+  <script>
+    // Wait for background image to load
+    window.addEventListener('load', () => {
+      const loadingScreen = document.getElementById('loadingScreen');
+      loadingScreen.classList.add('hidden');
+    });
+  </script>
 </body>
 </html>

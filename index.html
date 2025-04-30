@@ -41,7 +41,8 @@
       box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
       text-align: center;
       color: white;
-      display: none; /* hidden until loading is done */
+      opacity: 0; /* initially hidden */
+      transition: opacity 1s ease-in-out;
     }
 
     h1 {
@@ -67,7 +68,8 @@
       align-items: center;
       justify-content: center;
       z-index: 10;
-      transition: opacity 1s ease;
+      opacity: 1; /* Initially visible */
+      transition: opacity 1s ease-in-out;
     }
 
     .loading-screen.hidden {
@@ -120,3 +122,17 @@
       <h1>CELENOR</h1>
       <p>Luxury Skincare Reimagined</p>
       <p><strong>Launching Soon</strong></p>
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener('load', () => {
+      // Show the main content after 3 seconds
+      setTimeout(() => {
+        document.getElementById('loadingScreen').classList.add('hidden'); // Hide the loading screen
+        document.getElementById('mainContent').style.opacity = 1; // Make the main content visible
+      }, 3000); // 3000 milliseconds = 3 seconds
+    });
+  </script>
+</body>
+</html>
